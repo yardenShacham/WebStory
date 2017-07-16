@@ -19,10 +19,23 @@
     "parser": "babel-eslint",
     "extends": "airbnb-base"
   },
+  "scripts": {
+    "lint": "eslint src test tools",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "test:watch": "mocha --compilers js:babel-register --reporter min --watch",
+    "test:cover": "babel-node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "build": "node tools/build",
+    "prepublish": "npm run build",
+    "publish:docs": "easystatic deploy docs --repo kriasoft/babel-starter-kit",
+    "start": "easystatic start docs"
+  },
   "dependencies": {
     "babel-runtime": "^6.11.6"
   },
   "devDependencies": {
+    "@types/chai": "^4.0.1",
+    "@types/mocha": "^2.2.41",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.0.0",
@@ -45,17 +58,7 @@
     "rollup-plugin-scss": "^0.3.0",
     "rollup-plugin-string": "^2.0.2",
     "rollup-plugin-typescript": "^0.8.1",
-    "sinon": "^2.0.0-pre.3"
-  },
-  "scripts": {
-    "lint": "eslint src test tools",
-    "test": "mocha --compilers js:babel-register",
-    "test:watch": "mocha --compilers js:babel-register --reporter min --watch",
-    "test:cover": "babel-node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "build": "node tools/build",
-    "prepublish": "npm run build",
-    "publish:docs": "easystatic deploy docs --repo kriasoft/babel-starter-kit",
-    "start": "easystatic start docs"
+    "sinon": "^2.0.0-pre.3",
+    "ts-node": "^3.2.0"
   }
 }
