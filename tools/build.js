@@ -29,7 +29,7 @@ promise = promise.then(() => del(['dist/*']));
         let uglifiedCss = uglifycss.processFiles(['dist/web-story.css']);
         fs.writeFileSync('dist/web-story.min.css', uglifiedCss);
       }
-    }), uglify({}, minify)],
+    })],
   }).then(bundle => bundle.write({
     dest: `dist/${format === 'cjs' ? 'web-story' : `web-story.${format}`}.js`,
     format,
