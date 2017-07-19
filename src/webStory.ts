@@ -33,7 +33,7 @@ export class WebStory {
 		if (!this.isNeverTell()) {
 			this.startStoryCallCount++;
 			if (this.moveNextStoryCallCount === 0 && this.startStoryCallCount <= 1) {
-				this.storyContainer.moveNext().then((pageInfo: any) => {
+				return this.storyContainer.moveNext().then((pageInfo: any) => {
 					if (pageInfo.viewType === Modal) {
 						this.setClickLisenerByClassName('start-story', this.startFirstPage);
 						this.setClickLisenerByClassName("story-skip", this.skip);

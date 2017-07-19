@@ -12,7 +12,14 @@ export function isFunction(obj: any) {
 export function isUndefined(obj: any) {
 	return obj === undefined;
 }
+export function getFullDateFormated() {
+	function getTime(timeDigit: number) {
+		return timeDigit < 9 ? `0${timeDigit}` : timeDigit;
+	}
 
+	const date = new Date();
+	return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${getTime(date.getHours() + 1)}:${getTime(date.getMinutes() + 1)}`;
+}
 export function isNull(obj: any) {
 	return obj === null;
 }
