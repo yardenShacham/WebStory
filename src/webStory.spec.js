@@ -149,7 +149,7 @@ describe('Web story test', () => {
 						} else {
 							assert.fail("tool tip is not found");
 						}
-						//done();
+						webStory.endStory();
 					});
 				}
 				else
@@ -204,7 +204,7 @@ describe('Web story test', () => {
 						});
 						let localStrageVal = localStorage.getItem("story-never-tell-test-page");
 						expect(localStrageVal).to.equal("never");
-						done();
+						webStory.endStory();
 					});
 				}
 				else
@@ -233,7 +233,8 @@ describe('Web story test', () => {
 				let modal = document.getElementsByTagName("body")[0].children[1];
 				if (modal) {
 					webStory.skip({
-						preventDefault: () => {}
+						preventDefault: () => {
+						}
 					});
 					modal = document.getElementsByTagName("body")[0].children[1];
 					expect(modal).to.equal(undefined);
@@ -294,36 +295,6 @@ describe('Web story test', () => {
 				done();
 			}).should.notify(done);
 		});
-		it('start story and page(Tool tips) but with element that not exist on the dom', function (done) {
-			webStory = new WebStory({
-				getCurrentPageName: function () {
-					return "test-page";
-				},
-				pages: [
-					{
-						template: temps.welcomePageTemplate,
-						data: {
-							header: "test-header",
-							subHeader: "test-sub"
-						}
-					}, {
-						pageContainer: {
-							cssSelector: `#element-not-exsit`,
-							position: Bottom
-						},
-						template: temps.purpleFlowerTemplate,
-						data: {
-							header: "test-header",
-							subHeader: "test-sub"
-						}
-					}
-				]
-			});
-			webStory.startStory();
-
-		});
-
-
 	});
 
 });
