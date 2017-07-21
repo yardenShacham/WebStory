@@ -47,7 +47,7 @@ const Right = "right"
 const Top = "top"
 const Bottom = "bottom"
 
-describe('Web story test', () => {
+describe('Web story tests', () => {
 	jsdom();
 	const temps = {
 		purpleFlowerTemplate: getHtmlAsString("./webStoryDefaultTemplates/purpleFlower.html"),

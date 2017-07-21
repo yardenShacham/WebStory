@@ -1,6 +1,6 @@
 export function appandToBody(element: any) {
-	if (document.getElementsByTagName('body') && document.getElementsByTagName('body')[0]) {
-		document.getElementsByTagName('body')[0].appendChild(element);
+	if (document.body) {
+		document.body.appendChild(element);
 	}
 }
 export function setStyle(element: any, styleObj: any) {

@@ -44,9 +44,9 @@ export class StoryTooltip {
 		});
 	}
 
-	public resetTooltip(idContainer: string, position: string) {
+	public resetTooltip(selector: string, position: string) {
 		this.removeTooltip();
-		return this.setTooltip(idContainer, position);
+		return this.setTooltip(selector, position);
 	}
 
 	private removeTooltip() {
