@@ -55,7 +55,7 @@ export class WebStory {
 	}
 
 	private startFirstPage = () => {
-		this.storyContainer.moveNext().then((pageInfo: any) => {
+		return this.storyContainer.moveNext().then((pageInfo: any) => {
 			this.isLastPage = pageInfo.isLast;
 			this.setStoryActions();
 			this.disableByClassName("story-back");

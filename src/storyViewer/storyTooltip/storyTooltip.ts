@@ -38,6 +38,8 @@ export class StoryTooltip {
 					this.appandTooltip(tooltipLocation, position);
 					resolve(ToolTip);
 				}
+			}, (error: any) => {
+				reject(error);
 			});
 		});
 	}
@@ -66,6 +68,8 @@ export class StoryTooltip {
 					location: this.calculateElementLocation(element),
 					size: this.calculateElementSize(element)
 				});
+			}, (error: any) => {
+				reject(error);
 			});
 		});
 	}
