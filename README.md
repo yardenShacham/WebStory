@@ -21,7 +21,7 @@ var WebStory = require('webStory')
 ```
 3. use the WebStory to create new Story :)
 ```
-// WebStory = WebStory.webStory - in case imported using script tag
+// WebStory = WebStory.WebStory - in case imported using script tag
 webStory = new WebStory({
    getCurrentPageName: function () {
       return "string that represent the current page that you re found";

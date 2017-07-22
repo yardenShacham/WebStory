@@ -39,7 +39,7 @@ const fileCountToCreateForEachFormat = 2;
 					format,
 					sourceMap: true,
 					banner: `/* ${pkg.name} ${pkg.version} */`,
-					moduleName: format === 'umd' ? 'webStory' : undefined,
+					moduleName: format === 'umd' ? 'WebStory' : undefined,
 				}));
 			}
 			else {
@@ -54,7 +54,7 @@ const fileCountToCreateForEachFormat = 2;
 					format,
 					sourceMap: true,
 					banner: `/* ${pkg.name} ${pkg.version} */`,
-					moduleName: format === 'umd' ? 'webStory' : undefined,
+					moduleName: format === 'umd' ? 'WebStory' : undefined,
 				}))
 			}
 		}
