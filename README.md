@@ -9,7 +9,7 @@ In addtion webStory support all freamworks such as Angular by waiting to the giv
 ## Installation
 #### Using npm:
 ```
-$ npm install --save webStory
+$ npm install --save web-story
 ```
 ## Usage
 1. Include the css file (web-story.css) in you app
