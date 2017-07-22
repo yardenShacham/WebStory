@@ -1,14 +1,14 @@
 {
-	"name": "WebStory",
+	"name": "webStory",
 	"version": "1.0.0",
 	"description": "Library for building tours on your front page (Step-by-step guide and feature introduction)",
 	"author": "Yarden Shacham <yarden101111@gmail.com>",
 	"license": "MIT",
 	"main": "index.js",
-	"jsnext:main": "index.es.js",
+	"jsnext:main": "web-story.es.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/yardenShacham/WebStory"
+		"url": "https://github.com/yardenShacham/WebStory.git"
 	},
 	"keywords": [
 		"Step",
