@@ -22,24 +22,27 @@ var WebStory = require('webStory')
 3. use the WebStory to create new Story :)
 ```
 // WebStory = WebStory.WebStory - in case imported using script tag
+
 webStory = new WebStory({
    getCurrentPageName: function () {
       return "string that represent the current page that you re found";
    },
    pages: [
    {
-     pageContainer: undefined - (first page must be witout pageContainer beacasue is dont have one it is popUp)
-     template: "<h1>{{test}}</h1> - (in case undefined there is default template)"
+     pageContainer: undefined, //(first page must be witout pageContainer beacasue is dont have one it is popUp)
+     template: "<h1>{{test}}</h1>" //(in case undefined there is default template)
      data: {
-	   test: "this string will be transfer with {{test}} in the template"
+	   test: "this string will be transfer with {{test}} in the template",
+	   header:"this is prop of the deafulat template",
+	   subHeader:"this is prop of the deafulat template"
      }
    }, 
    {
      pageContainer: {
-	   cssSelector: `css selector for get the element(#elementId)`
-	   position: 'left/right/top/botton - from where the tooltip will show'
+	   cssSelector: `#elementId`, //css selector for get the element
+	   position: 'left/right/top/botton // from where the tooltip will show'
      },
-     template:null or undefined(default template),
+     template:undefined, //(undefined = default template),
      data: {
 	   header: "header of the default template",
 	   content: "content of the default template"
