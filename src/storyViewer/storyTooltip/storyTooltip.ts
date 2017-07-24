@@ -82,7 +82,7 @@ export class StoryTooltip {
 				document.documentElement.scrollTop : document.body.scrollTop;
 			let scrollLeft = document.documentElement.scrollLeft ?
 				document.documentElement.scrollLeft : document.body.scrollLeft;
-			elementTop = rect.top;
+			elementTop = rect.top + scrollTop;
 			elementLeft = rect.left + scrollLeft;
 			return {
 				left: elementLeft,
@@ -145,7 +145,7 @@ export class StoryTooltip {
 
 		let element = getElementByHtmlTemplate(template);
 		if (element) {
-			appandToBody(element);
+			appandToBody(element,false);
 			let rectInfo = element.getBoundingClientRect();
 			let size = {
 				height: rectInfo.height,
@@ -182,7 +182,7 @@ export class StoryTooltip {
 
 		toolTip.id = this.currentTooltipId;
 		toolTip.classList.add(position);
-		appandToBody(toolTip);
+		appandToBody(toolTip,true);
 	}
 
 	private removeFromDom(element: any): void {

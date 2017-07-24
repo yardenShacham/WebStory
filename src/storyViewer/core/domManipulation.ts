@@ -1,13 +1,14 @@
-export function appandToBody(element: any) {
+export function appandToBody(element: any, withAutoScroll: any) {
 
 	if (document.body) {
 		document.body.appendChild(element);
-		setScrollPosition(element);
+		if (withAutoScroll)
+			setScrollPosition(element);
 	}
 }
 function setScrollPosition(element: any) {
 	let elementBottomPosition = element.getBoundingClientRect().bottom;
-	window.scrollTo(0,elementBottomPosition);
+	window.scrollTo(0, elementBottomPosition);
 }
 export function setStyle(element: any, styleObj: any) {
 	let keys = Object.keys(styleObj);
