@@ -1,7 +1,7 @@
 # Web Story
 
 ##### Library for building tours on your front page (Step-by-step guide and feature introduction).
-## Dependesies -  None
+## Dependesies -  in the mean time Angular
 
 ## Support
 WebStory Support UMD(Universal Module Definition), CommonJS, es moudles and regular script tag.
@@ -13,13 +13,15 @@ $ npm install --save web-story
 ```
 ## Usage
 1. Include the css file (web-story.css) in you app
-2. Import the js file (index.js) in your app you can choose the way you want to import the file
+2. Include matiraial css
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+3. Import the js file (index.js) in your app you can choose the way you want to import the file
 ```
 import { WebStory } from 'webStory' 
 var WebStory = require('webStory')
 <script src="webStory"></script>
 ```
-3. use the WebStory to create new Story :)
+4. use the WebStory to create new Story :)
 ```
 // WebStory = WebStory.WebStory - in case imported using script tag
 

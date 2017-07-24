@@ -57,7 +57,7 @@ export class WebStory {
 	private startFirstPage = () => {
 		return this.storyContainer.moveNext().then((pageInfo: any) => {
 			this.isLastPage = pageInfo.isLast;
-			this.setStoryActions();
+			this.setStoryActions(this.isLastPage);
 			this.disableByClassName("story-back");
 		});
 	}
@@ -82,13 +82,7 @@ export class WebStory {
 			this.storyContainer.moveNext().then((pageInfo: any) => {
 				this.isLastPage = pageInfo.isLast;
 				this.isFirstPage = false;
-				if (this.isLastPage) {
-					this.setClickLisenerByClassName("story-end", this.endStory);
-					this.setStoryActions(true);
-				}
-				else {
-					this.setStoryActions();
-				}
+				this.setStoryActions(this.isLastPage);
 			});
 		}
 	}
@@ -163,6 +157,8 @@ export class WebStory {
 	private  setStoryActions(isEnd: boolean = false) {
 		if (!isEnd)
 			this.setClickLisenerByClassName("story-next", this.moveNext);
+		else
+			this.setClickLisenerByClassName("story-end", this.endStory);
 
 		this.setClickLisenerByClassName("story-back", this.moveBack);
 		this.setClickLisenerByClassName("story-skip", this.skip);

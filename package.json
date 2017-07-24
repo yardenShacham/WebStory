@@ -1,6 +1,6 @@
 {
 	"name": "web-story",
-	"version": "1.0.0",
+	"version": "1.0.8",
 	"description": "Library for building tours on your front page (Step-by-step guide and feature introduction)",
 	"author": "Yarden Shacham <yarden101111@gmail.com>",
 	"license": "MIT",
@@ -11,8 +11,8 @@
 		"url": "https://github.com/yardenShacham/WebStory.git"
 	},
 	"keywords": [
-		"Step",
-		"Step-by-step",
+		"step",
+		"step-by-step",
 		"tours",
 		"guide",
 		"feature introduction"
