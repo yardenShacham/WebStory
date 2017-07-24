@@ -253,6 +253,9 @@ $break-large: 1680px;
 		}
 
 		.story-actions {
+			.page-counter {
+				margin-top: 10px;
+			}
 			margin: 30px 25%;
 			width: 50%;
 			display: inline-flex;
@@ -269,9 +272,6 @@ $break-large: 1680px;
 			width: 100%;
 			div {
 				display: inline-flex;
-				span {
-					margin-top: 12px;
-				}
 			}
 		}
 		.story-neverTell {
@@ -281,49 +281,58 @@ $break-large: 1680px;
 
 		}
 		.btn-content-right {
+			display: inline-flex;
+			margin-top: 3px;
 			span {
-				margin-left: 30%;
-				margin-right: 5px;
-				margin-top: 1px;
+				margin-right: 4px;
 				font-weight: 400;
+				font-size: 20px;
 			}
 			svg {
+				margin-left: 1px;
 				fill: white;
 			}
 		}
 		.btn-content-left {
+			display: inline-flex;
+			margin-top: 3px;
 			svg {
-				margin-left: 30%;
-				margin-right: 5px;
+				margin-right: 1px;
 				fill: white;
 			}
 			span {
-				margin-top: 1px;
+				margin-left: 4px;
 				font-weight: 400;
+				font-size: 20px;
 			}
 		}
 		.story-skip {
 			left: 88%;
 			position: absolute;
-			margin-top: 12px;
 		}
 		.story-next {
 			border-bottom-right-radius: 30px;
 			border-top-right-radius: 30px;
 			background-color: #62caff;
-			width: 28px;
 			color: white;
 			border: 0px;
+			width: 100%;
 			height: 40px;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 		.story-end {
 			border-bottom-right-radius: 30px;
 			border-top-right-radius: 30px;
 			background-color: #62caff;
-			width: 28px;
 			color: white;
 			border: 0px;
+			width: 100%;
 			height: 40px;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 		.story-back {
 			border-bottom-left-radius: 30px;
@@ -331,10 +340,13 @@ $break-large: 1680px;
 			background-color: #62caff;
 			margin-left: 12px;
 			margin-right: 2px;
-			width: 28px;
+			width: 100%;
 			color: white;
 			border: 0px;
 			height: 40px;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 	}
 
@@ -436,7 +448,8 @@ $break-large: 1680px;
 @media screen and (max-width: $break-small-plus) {
 	.purple-flower {
 		@include purple-gradinet-t;
-		padding: 30px 30px 0 30px;
+		padding: 20px 20px 0 20px;
+		max-width: 180px;
 		color: white;
 		a {
 			color: white;
@@ -452,7 +465,10 @@ $break-large: 1680px;
 		}
 
 		.story-actions {
-			margin: 30px 25%;
+			.page-counter {
+				margin-top: 10px;
+			}
+			margin: 30px 16%;
 			width: 50%;
 			display: inline-flex;
 		}
@@ -468,61 +484,74 @@ $break-large: 1680px;
 			width: 100%;
 			div {
 				display: inline-flex;
+				margin-left: -10px;
 				span {
-					margin-top: 12px;
+					font-size: 10px;
+					margin-top: 4px;
 				}
 			}
 		}
 		.story-neverTell {
 			width: 20px;
 			margin-left: 0px;
-			margin-right: 10px;
-
+			margin-right: 0px;
 		}
 		.btn-content-right {
+			display: inline-flex;
+			margin-top: 3px;
 			span {
-				margin-left: 30%;
-				margin-right: 5px;
-				margin-top: 1px;
+				display: none;
+				margin-right: 4px;
 				font-weight: 400;
+				font-size: 18px;
 			}
 			svg {
+				margin-left: 1px;
 				fill: white;
 			}
 		}
 		.btn-content-left {
+			display: inline-flex;
+			margin-top: 3px;
 			svg {
-				margin-left: 30%;
-				margin-right: 5px;
+				margin-right: 1px;
 				fill: white;
 			}
 			span {
-				margin-top: 1px;
+				display: none;
+				margin-left: 4px;
 				font-weight: 400;
+				font-size: 18px;
 			}
 		}
 		.story-skip {
 			left: 88%;
 			position: absolute;
-			margin-top: 12px;
+			font-size: 10px;
 		}
 		.story-next {
 			border-bottom-right-radius: 30px;
 			border-top-right-radius: 30px;
 			background-color: #62caff;
-			width: 28px;
 			color: white;
 			border: 0px;
+			width: 100%;
 			height: 40px;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 		.story-end {
 			border-bottom-right-radius: 30px;
 			border-top-right-radius: 30px;
 			background-color: #62caff;
-			width: 28px;
 			color: white;
 			border: 0px;
+			width: 100%;
 			height: 40px;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 		.story-back {
 			border-bottom-left-radius: 30px;
@@ -530,10 +559,13 @@ $break-large: 1680px;
 			background-color: #62caff;
 			margin-left: 12px;
 			margin-right: 2px;
-			width: 28px;
+			width: 100%;
 			color: white;
 			border: 0px;
 			height: 40px;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 	}
 
@@ -635,7 +667,8 @@ $break-large: 1680px;
 @media screen and (max-width: $break-small) {
 	.purple-flower {
 		@include purple-gradinet-t;
-		padding: 30px 30px 0 30px;
+		padding: 20px 20px 0 20px;
+		max-width: 180px;
 		color: white;
 		a {
 			color: white;
@@ -651,7 +684,10 @@ $break-large: 1680px;
 		}
 
 		.story-actions {
-			margin: 30px 25%;
+			.page-counter {
+				margin-top: 10px;
+			}
+			margin: 30px 16%;
 			width: 50%;
 			display: inline-flex;
 		}
@@ -667,61 +703,74 @@ $break-large: 1680px;
 			width: 100%;
 			div {
 				display: inline-flex;
+				margin-left: -10px;
 				span {
-					margin-top: 12px;
+					font-size: 10px;
+					margin-top: 4px;
 				}
 			}
 		}
 		.story-neverTell {
 			width: 20px;
 			margin-left: 0px;
-			margin-right: 10px;
-
+			margin-right: 0px;
 		}
 		.btn-content-right {
+			display: inline-flex;
+			margin-top: 3px;
 			span {
-				margin-left: 30%;
-				margin-right: 5px;
-				margin-top: 1px;
+				display: none;
+				margin-right: 4px;
 				font-weight: 400;
+				font-size: 18px;
 			}
 			svg {
+				margin-left: 1px;
 				fill: white;
 			}
 		}
 		.btn-content-left {
+			display: inline-flex;
+			margin-top: 3px;
 			svg {
-				margin-left: 30%;
-				margin-right: 5px;
+				margin-right: 1px;
 				fill: white;
 			}
 			span {
-				margin-top: 1px;
+				display: none;
+				margin-left: 4px;
 				font-weight: 400;
+				font-size: 18px;
 			}
 		}
 		.story-skip {
 			left: 88%;
 			position: absolute;
-			margin-top: 12px;
+			font-size: 10px;
 		}
 		.story-next {
 			border-bottom-right-radius: 30px;
 			border-top-right-radius: 30px;
 			background-color: #62caff;
-			width: 28px;
 			color: white;
 			border: 0px;
+			width: 100%;
 			height: 40px;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 		.story-end {
 			border-bottom-right-radius: 30px;
 			border-top-right-radius: 30px;
 			background-color: #62caff;
-			width: 28px;
 			color: white;
 			border: 0px;
+			width: 100%;
 			height: 40px;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 		.story-back {
 			border-bottom-left-radius: 30px;
@@ -729,10 +778,13 @@ $break-large: 1680px;
 			background-color: #62caff;
 			margin-left: 12px;
 			margin-right: 2px;
-			width: 28px;
+			width: 100%;
 			color: white;
 			border: 0px;
 			height: 40px;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 	}
 
