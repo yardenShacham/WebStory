@@ -1,7 +1,13 @@
 export function appandToBody(element: any) {
+
 	if (document.body) {
 		document.body.appendChild(element);
+		setScrollPosition(element);
 	}
+}
+function setScrollPosition(element: any) {
+	let elementBottomPosition = element.getBoundingClientRect().bottom;
+	window.scrollTo(0,elementBottomPosition);
 }
 export function setStyle(element: any, styleObj: any) {
 	let keys = Object.keys(styleObj);

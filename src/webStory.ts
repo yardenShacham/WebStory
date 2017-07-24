@@ -46,7 +46,8 @@ export class WebStory {
 		}
 	}
 
-	public endStory = () => {
+	public endStory = (event: any) => {
+		event.preventDefault();
 		if (this.lifeStyleCallbacks && isFunction(this.lifeStyleCallbacks.afterEnding))
 			this.lifeStyleCallbacks.afterEnding();
 
@@ -73,6 +74,7 @@ export class WebStory {
 	}
 
 	private moveNext = (event: any) => {
+		event.preventDefault();
 		if (this.lifeStyleCallbacks && isFunction(this.lifeStyleCallbacks.preMoveNext))
 			this.lifeStyleCallbacks.preMoveNext();
 
@@ -87,7 +89,9 @@ export class WebStory {
 		}
 	}
 
-	private moveBack = () => {
+	private moveBack = (event: any) => {
+		event.preventDefault();
+
 		if (this.lifeStyleCallbacks && isFunction(this.lifeStyleCallbacks.preMoveBack))
 			this.lifeStyleCallbacks.preMoveBack();
 		if (!this.isFirstPage) {
