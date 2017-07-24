@@ -1,6 +1,6 @@
 {
 	"name": "web-story",
-	"version": "1.0.8",
+	"version": "1.1.2",
 	"description": "Library for building tours on your front page (Step-by-step guide and feature introduction)",
 	"author": "Yarden Shacham <yarden101111@gmail.com>",
 	"license": "MIT",
