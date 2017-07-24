@@ -1,7 +1,7 @@
 # Web Story
 
 ##### Library for building tours on your front page (Step-by-step guide and feature introduction).
-## Dependesies -  in the mean time Angular
+## Dependesies -  in the meantime Angular material css
 
 ## Support
 WebStory Support UMD(Universal Module Definition), CommonJS, es moudles and regular script tag.
