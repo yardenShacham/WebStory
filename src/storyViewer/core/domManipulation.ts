@@ -1,14 +1,15 @@
-export function appandToBody(element: any, withAutoScroll: any) {
+export function appandToBody(element: any, marginFromElement?: number) {
 
 	if (document.body) {
 		document.body.appendChild(element);
-		if (withAutoScroll)
-			setScrollPosition(element);
+		if (marginFromElement)
+			setScrollPosition(element, marginFromElement);
 	}
 }
-function setScrollPosition(element: any) {
-	let elementBottomPosition = element.getBoundingClientRect().bottom;
-	window.scrollTo(0, elementBottomPosition);
+function setScrollPosition(element: any, margin: number) {
+
+	let elementBottomPosition = element.style.top ? parseInt(element.style.top) : element.getBoundingClientRect().bottom;
+	window.scrollTo(0, elementBottomPosition - (margin * 2));
 }
 export function setStyle(element: any, styleObj: any) {
 	let keys = Object.keys(styleObj);

@@ -145,7 +145,7 @@ export class StoryTooltip {
 
 		let element = getElementByHtmlTemplate(template);
 		if (element) {
-			appandToBody(element,false);
+			appandToBody(element);
 			let rectInfo = element.getBoundingClientRect();
 			let size = {
 				height: rectInfo.height,
@@ -182,7 +182,7 @@ export class StoryTooltip {
 
 		toolTip.id = this.currentTooltipId;
 		toolTip.classList.add(position);
-		appandToBody(toolTip,true);
+		appandToBody(toolTip, this.marginFromContainer);
 	}
 
 	private removeFromDom(element: any): void {
