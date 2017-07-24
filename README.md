@@ -11,10 +11,13 @@ In addtion webStory support all freamworks such as Angular by waiting to the giv
 ```
 $ npm install --save web-story
 ```
+
 ## Usage
 1. Include the css file (web-story.css) in you app
-2. Include matiraial css
+2. Include matiraial css 
+```
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+```
 3. Import the js file (index.js) in your app you can choose the way you want to import the file
 ```
 import { WebStory } from 'webStory' 
