@@ -37,7 +37,12 @@ export class StoryViewer {
 	}
 
 	public resetPage() {
-		return this.tooltip.resetTooltip(this.currentPage.pageContainer.cssSelector, this.currentPage.pageContainer.position);
+		try {
+			return this.tooltip.resetTooltip(this.currentPage.pageContainer.cssSelector, this.currentPage.pageContainer.position);
+		}
+		catch (e) {
+			return null;
+		}
 	}
 
 	private  distroyTooltipInstance() {
