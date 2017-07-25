@@ -7,6 +7,9 @@ export class StoryViewer {
 	private currentPage: Page
 	private modalCreator: StoryModalCreator
 
+	constructor(private renderTimeout: number) {
+		this.renderTimeout = renderTimeout;
+	}
 
 	public setPage(page: Page) {
 		//remove old tool tip is has any
@@ -20,7 +23,7 @@ export class StoryViewer {
 				//tooltip
 				let fullHtmlTemplate = this.createTemplate(page.data, page.template);
 				if (fullHtmlTemplate) {
-					this.tooltip = new StoryTooltip(fullHtmlTemplate);
+					this.tooltip = new StoryTooltip(fullHtmlTemplate, this.renderTimeout);
 					this.currentPage = page;
 					return this.tooltip.setTooltip(page.pageContainer.cssSelector, page.pageContainer.position);
 				}

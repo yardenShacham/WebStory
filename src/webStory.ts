@@ -1,6 +1,6 @@
 import  {StoryContainer} from './storyContainer/storyContainer'
 import {isFunction, isNull, isString, isBoolean} from './utility'
-import  {Page, Settings, LifeStyleCallbacks} from './webStory.model'
+import  {Page, Settings, LifeStyleCallbacks, WebStoryConfiguration} from './webStory.model'
 import  {Modal} from './storyViewer/core/constants'
 import purpleFlowerTemplate from './webStoryDefaultTemplates/purpleFlower.html';
 import purpleFlowerLastPageTemplate from './webStoryDefaultTemplates/purpleFlower-lastPage.html';
@@ -13,6 +13,7 @@ export class WebStory {
 	private isLastPage: boolean
 	private isFirstPage: boolean
 	private startStoryCallCount: number = 0
+	private configuration: WebStoryConfiguration
 	private moveNextStoryCallCount: number = 0
 	private getCurrentPageName: () => string
 
@@ -24,7 +25,11 @@ export class WebStory {
 			throw new Error(message);
 		}
 		this.lifeStyleCallbacks = settings.lifeStyleCallbacks;
-		this.storyContainer = new StoryContainer(this.setPagesWithDefaultTemplate(settings.pages));
+		this.configuration = settings.configuration ? settings.configuration : {
+			isVisableMode: true,
+			renderTimeout: null
+		}
+		this.storyContainer = new StoryContainer(this.setPagesWithDefaultTemplate(settings.pages),this.configuration.renderTimeout);
 		window.addEventListener('resize', this.onResize, null);
 	}
 
@@ -59,7 +64,10 @@ export class WebStory {
 		return this.storyContainer.moveNext().then((pageInfo: any) => {
 			this.isLastPage = pageInfo.isLast;
 			this.setStoryActions(this.isLastPage);
-			this.disableByClassName("story-back");
+			if (this.configuration.isVisableMode)
+				this.hideByClassName("story-back");
+			else
+				this.disableByClassName("story-back");
 		});
 	}
 
@@ -100,8 +108,14 @@ export class WebStory {
 				this.isLastPage = false;
 				this.setStoryActions();
 
-				if (this.isFirstPage)
-					this.disableByClassName("story-back");
+				if (this.isFirstPage) {
+					if (this.configuration.isVisableMode) {
+						this.hideByClassName("story-back");
+					}
+					else {
+						this.disableByClassName("story-back");
+					}
+				}
 			});
 		}
 	}
@@ -117,6 +131,13 @@ export class WebStory {
 		let elements = document.getElementsByClassName(className);
 		if (elements[0]) {
 			elements[0].attributes.setNamedItem(document.createAttribute("disabled"))
+		}
+	}
+
+	private  hideByClassName(className: string) {
+		let elements: any = document.getElementsByClassName(className);
+		if (elements[0]) {
+			elements[0].style.display = "none";
 		}
 	}
 
@@ -142,19 +163,21 @@ export class WebStory {
 
 	private onResize = () => {
 		if (!this.isNeverTell()) {
-			this.storyContainer.resetPage().then(() => {
-				if (this.isLastPage) {
-					this.setClickLisenerByClassName("story-end", this.endStory);
-					this.setStoryActions(true);
-				}
-				else if (this.isFirstPage) {
-					this.setStoryActions();
-					this.disableByClassName("story-back");
-				}
-				else {
-					this.setStoryActions();
-				}
-			});
+			if(this.storyContainer && isFunction(this.storyContainer.resetPage)){
+				this.storyContainer.resetPage().then(() => {
+					if (this.isLastPage) {
+						this.setClickLisenerByClassName("story-end", this.endStory);
+						this.setStoryActions(true);
+					}
+					else if (this.isFirstPage) {
+						this.setStoryActions();
+						this.disableByClassName("story-back");
+					}
+					else {
+						this.setStoryActions();
+					}
+				});
+			}
 		}
 	}
 
