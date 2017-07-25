@@ -45,6 +45,9 @@ $break-large: 1680px;
 	.story-actions {
 		.page-counter {
 			margin-top: 10px;
+			&.no-back {
+				margin-top: 12px;
+			}
 		}
 		margin: 30px 25%;
 		width: 50%;
@@ -137,6 +140,10 @@ $break-large: 1680px;
 		&:hover {
 			cursor: pointer;
 		}
+	}
+	.hide-back {
+		border-radius: 100%;
+		margin-left: 20px;
 	}
 }
 

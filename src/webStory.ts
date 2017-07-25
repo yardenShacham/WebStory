@@ -29,7 +29,7 @@ export class WebStory {
 			isVisableMode: true,
 			renderTimeout: null
 		}
-		this.storyContainer = new StoryContainer(this.setPagesWithDefaultTemplate(settings.pages),this.configuration.renderTimeout);
+		this.storyContainer = new StoryContainer(this.setPagesWithDefaultTemplate(settings.pages), this.configuration.renderTimeout);
 		window.addEventListener('resize', this.onResize, null);
 	}
 
@@ -65,7 +65,7 @@ export class WebStory {
 			this.isLastPage = pageInfo.isLast;
 			this.setStoryActions(this.isLastPage);
 			if (this.configuration.isVisableMode)
-				this.hideByClassName("story-back");
+				this.hideBackStoryBtn();
 			else
 				this.disableByClassName("story-back");
 		});
@@ -110,7 +110,7 @@ export class WebStory {
 
 				if (this.isFirstPage) {
 					if (this.configuration.isVisableMode) {
-						this.hideByClassName("story-back");
+						this.hideBackStoryBtn();
 					}
 					else {
 						this.disableByClassName("story-back");
@@ -131,6 +131,16 @@ export class WebStory {
 		let elements = document.getElementsByClassName(className);
 		if (elements[0]) {
 			elements[0].attributes.setNamedItem(document.createAttribute("disabled"))
+		}
+	}
+
+	private hideBackStoryBtn() {
+		this.hideByClassName("story-back");
+		let nextBtn = document.getElementsByClassName("story-next");
+		let pageCounter: any = document.getElementsByClassName("page-counter");
+		if (nextBtn && nextBtn.length && nextBtn[0] && pageCounter && pageCounter.length && pageCounter[0]) {
+			nextBtn[0].classList.add("hide-back")
+			pageCounter[0].classList.add("no-back");
 		}
 	}
 
@@ -163,7 +173,7 @@ export class WebStory {
 
 	private onResize = () => {
 		if (!this.isNeverTell()) {
-			if(this.storyContainer && isFunction(this.storyContainer.resetPage)){
+			if (this.storyContainer && isFunction(this.storyContainer.resetPage)) {
 				this.storyContainer.resetPage().then(() => {
 					if (this.isLastPage) {
 						this.setClickLisenerByClassName("story-end", this.endStory);
