@@ -8,7 +8,7 @@ export class StoryContainer {
 	private viewer: StoryViewer
 	private isHasModal: boolean
 
-	constructor(pages: Page[],renderTimeout:number) {
+	constructor(pages: Page[], renderTimeout: number) {
 		this.isHasModal = this.setPageDataWithCurrentPageNumber(pages);
 		this.storage = new StorageContainer(pages, this.isHasModal);
 		this.viewer = new StoryViewer(renderTimeout);
@@ -20,7 +20,8 @@ export class StoryContainer {
 		return this.viewer.setPage(currentPage.data).then((viewType: any) => {
 			return {
 				viewType: viewType,
-				isLast: currentPage.isLast
+				isLast: currentPage.isLast,
+				isDefault: currentPage.data.isDefault
 			};
 		});
 
@@ -35,7 +36,8 @@ export class StoryContainer {
 		return this.viewer.setPage(currentPage.data).then((viewType: any) => {
 			return {
 				viewType: viewType,
-				isLast: currentPage.isLast
+				isLast: currentPage.isLast,
+				isDefault: currentPage.data.isDefault
 			};
 		});
 	}

@@ -1,7 +1,8 @@
 export  interface Page {
 	pageContainer?: PageContainer
 	template?: string,
-	data: any
+	data: any,
+	isDefault?: boolean
 }
 export  interface PageContainer {
 	cssSelector: string

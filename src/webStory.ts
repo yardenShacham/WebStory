@@ -52,19 +52,29 @@ export class WebStory {
 	}
 
 	public endStory = (event: any) => {
-		event.preventDefault();
+		if (event)
+			event.preventDefault();
 		if (this.lifeStyleCallbacks && isFunction(this.lifeStyleCallbacks.afterEnding))
 			this.lifeStyleCallbacks.afterEnding();
 
 		this.storyContainer.endStory();
 		window.removeEventListener('resize', this.onResize);
+		this.removeAllStoryAction();
+	}
+
+	public neverTell() {
+		localStorage.setItem(this.getNeverTellId(), "never");
+	}
+
+	public removeNeverTell() {
+		localStorage.removeItem(this.getNeverTellId());
 	}
 
 	private startFirstPage = () => {
 		return this.storyContainer.moveNext().then((pageInfo: any) => {
 			this.isLastPage = pageInfo.isLast;
 			this.setStoryActions(this.isLastPage);
-			if (this.configuration.isVisableMode)
+			if (this.configuration.isVisableMode && !pageInfo.isDefault)
 				this.hideBackStoryBtn();
 			else
 				this.disableByClassName("story-back");
@@ -109,7 +119,7 @@ export class WebStory {
 				this.setStoryActions();
 
 				if (this.isFirstPage) {
-					if (this.configuration.isVisableMode) {
+					if (this.configuration.isVisableMode && !pageInfo.isDefault) {
 						this.hideBackStoryBtn();
 					}
 					else {
@@ -209,6 +219,14 @@ export class WebStory {
 		this.removeClickLisenerByClassName("story-neverTell", this.setNeverTell);
 	}
 
+	private removeAllStoryAction() {
+		this.removeClickLisenerByClassName("story-next", this.moveNext);
+		this.removeClickLisenerByClassName("story-back", this.moveBack);
+		this.removeClickLisenerByClassName("story-skip", this.skip);
+		this.removeClickLisenerByClassName("story-neverTell", this.setNeverTell);
+		this.removeClickLisenerByClassName("story-end", this.endStory);
+	}
+
 	private  removeClickLisenerByClassName(className: string, callback: any) {
 		let element: any = document.getElementsByClassName(className);
 		if (element[0]) {
@@ -233,14 +251,19 @@ export class WebStory {
 					pages[i].data.header = `Welcome to ${this.getCurrentPageName()} Tour!`;
 				if (!pages[i].data.subHeader)
 					pages[i].data.subHeader = "";
-				if (!pages[i].template)
+				if (!pages[i].template) {
 					pages[i].template = welcomePageTemplate;
+					pages[i].isDefault = true;
+				}
+				else
+					pages[i].isDefault = false;
 			}
 
 			newPages.push({
 				data: pages[i].data,
 				pageContainer: pages[i].pageContainer,
-				template: pages[i].template ? pages[i].template : this.getDefaultTemplate(i == (pages.length - 1))
+				template: pages[i].template ? pages[i].template : this.getDefaultTemplate(i == (pages.length - 1)),
+				isDefault: pages[i].template ? false : true
 			});
 		}
 		if (!isModalDefiend) {
