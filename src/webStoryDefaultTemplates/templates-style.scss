@@ -29,6 +29,7 @@ $break-large: 1680px;
 	@include purple-gradinet-t;
 	padding: 30px 30px 0 30px;
 	color: white;
+	min-width: 300px;
 	a {
 		color: white;
 	}
@@ -100,7 +101,7 @@ $break-large: 1680px;
 		}
 	}
 	.story-skip {
-		left: 88%;
+		right: 3%;
 		position: absolute;
 	}
 	.story-next {
@@ -244,6 +245,7 @@ $break-large: 1680px;
 		@include purple-gradinet-t;
 		padding: 30px 30px 0 30px;
 		color: white;
+		min-width: 300px;
 		a {
 			color: white;
 		}
@@ -312,7 +314,7 @@ $break-large: 1680px;
 			}
 		}
 		.story-skip {
-			left: 88%;
+			right: 3%;
 			position: absolute;
 		}
 		.story-next {
@@ -456,6 +458,7 @@ $break-large: 1680px;
 		padding: 20px 20px 0 20px;
 		max-width: 180px;
 		color: white;
+		min-width: 200px;
 		a {
 			color: white;
 		}
@@ -530,7 +533,7 @@ $break-large: 1680px;
 			}
 		}
 		.story-skip {
-			left: 88%;
+			right: 3%;
 			position: absolute;
 			font-size: 10px;
 		}
@@ -675,6 +678,7 @@ $break-large: 1680px;
 		padding: 20px 20px 0 20px;
 		max-width: 180px;
 		color: white;
+		min-width: 200px;
 		a {
 			color: white;
 		}
@@ -749,7 +753,7 @@ $break-large: 1680px;
 			}
 		}
 		.story-skip {
-			left: 88%;
+			right: 3%;
 			position: absolute;
 			font-size: 10px;
 		}
