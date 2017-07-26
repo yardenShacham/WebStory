@@ -54,7 +54,7 @@ webStory = new WebStory({
 webStory.startStory(); -- return Promise
 ```
 ## API Reference
-** [Full Documentation]() **
+** [Full Documentation](https://github.com/yardenShacham/WebStory/wiki) **
 
 
 License
