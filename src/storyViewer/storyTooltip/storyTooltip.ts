@@ -2,7 +2,7 @@ import  {Bottom, Top, Left, Right} from './storyTooltipPositions'
 import  {Location, Size, SizeAndLocation} from './storyTooltip.model'
 import {ToolTip} from '../core/constants'
 import  {appandToBody, getElementByHtmlTemplate, setStyle, waitForElement} from '../core/domManipulation'
-import  {getFullDateFormated} from '../../utility'
+import  {getFullDateFormated, isBoolean} from '../../utility'
 import './storyTooltip.scss'
 
 const MAX_WIDTH: number = 700;
@@ -17,7 +17,7 @@ export class StoryTooltip {
 	private marginFromContainer: number
 	private containerClass: string
 
-	constructor(template: string, timeout?: number) {
+	constructor(template: string, timeout?: number, private isAutoScrolling?: boolean) {
 		this.sizePrefix = "px";
 		this.defaultSize = {
 			width: 100,
@@ -27,6 +27,7 @@ export class StoryTooltip {
 		this.containerClass = "story-tool-tip-container ";
 		this.timeout = timeout ? timeout : 5000;
 		this.htmlTemaplte = this.setTooltipTemplate(template);
+		this.isAutoScrolling = isBoolean(isAutoScrolling) ? isAutoScrolling : true;
 	}
 
 	public setTooltip(selector: string, position: string): Promise<boolean> {
@@ -119,7 +120,7 @@ export class StoryTooltip {
 					};
 				case Top:
 					return {
-						top: containerData.location.top - (tooltipSize.height + (this.marginFromContainer) * 2),
+						top: containerData.location.top - (tooltipSize.height + this.marginFromContainer),
 						left: this.getPercentage(containerData.size.width, tooltipSize.width) < 6 ? containerData.location.left - (tooltipSize.width * 0.05) : containerData.location.left
 					};
 				case Bottom:
@@ -144,9 +145,10 @@ export class StoryTooltip {
 			return null;
 
 		let element = getElementByHtmlTemplate(template);
+		element.style.position = "absolute";
 		if (element) {
 			appandToBody(element);
-			let rectInfo = element.getBoundingClientRect();
+			let rectInfo = document.getElementsByClassName(this.containerClass)[0].getBoundingClientRect();
 			let size = {
 				height: rectInfo.height,
 				width: rectInfo.width > MAX_WIDTH ? MAX_WIDTH : rectInfo.width
@@ -182,7 +184,7 @@ export class StoryTooltip {
 
 		toolTip.id = this.currentTooltipId;
 		toolTip.classList.add(position);
-		appandToBody(toolTip, this.marginFromContainer);
+		appandToBody(toolTip, this.isAutoScrolling ? this.marginFromContainer : null);
 	}
 
 	private removeFromDom(element: any): void {

@@ -6,6 +6,8 @@
 ## Support
 WebStory Support UMD(Universal Module Definition), CommonJS, es moudles and regular script tag.
 In addtion webStory support all freamworks such as Angular by waiting to the given element to display(There is Configurable timeout).
+## Demo
+https://codepen.io/yarden101/full/rzVwXJ
 ## Installation
 #### Using npm:
 ```

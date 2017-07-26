@@ -21,6 +21,7 @@ export  interface Settings {
 }
 export interface WebStoryConfiguration {
 	isVisableMode: boolean
+	isAutoScrolling: boolean
 	renderTimeout: number
 }
 export interface LifeStyleCallbacks {

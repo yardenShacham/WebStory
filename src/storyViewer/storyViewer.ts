@@ -7,8 +7,9 @@ export class StoryViewer {
 	private currentPage: Page
 	private modalCreator: StoryModalCreator
 
-	constructor(private renderTimeout: number) {
+	constructor(private renderTimeout: number, private isAutoScrolling?: boolean) {
 		this.renderTimeout = renderTimeout;
+		this.isAutoScrolling = isAutoScrolling;
 	}
 
 	public setPage(page: Page) {

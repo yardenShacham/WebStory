@@ -8,10 +8,10 @@ export class StoryContainer {
 	private viewer: StoryViewer
 	private isHasModal: boolean
 
-	constructor(pages: Page[], renderTimeout: number) {
+	constructor(pages: Page[], renderTimeout: number, isAutoScrolling: boolean) {
 		this.isHasModal = this.setPageDataWithCurrentPageNumber(pages);
 		this.storage = new StorageContainer(pages, this.isHasModal);
-		this.viewer = new StoryViewer(renderTimeout);
+		this.viewer = new StoryViewer(renderTimeout, isAutoScrolling);
 	}
 
 

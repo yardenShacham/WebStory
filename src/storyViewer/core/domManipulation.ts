@@ -7,9 +7,10 @@ export function appandToBody(element: any, marginFromElement?: number) {
 	}
 }
 function setScrollPosition(element: any, margin: number) {
-
-	let elementBottomPosition = element.style.top ? parseInt(element.style.top) : element.getBoundingClientRect().bottom;
-	window.scrollTo(0, elementBottomPosition - (margin * 2));
+	let elementRectInfo = element.getBoundingClientRect();
+	let elementBottomPosition = element.style.top ? parseInt(element.style.top) : elementRectInfo.bottom;
+	let elementRightPosition = element.style.left ? (parseInt(element.style.left) + elementRectInfo.width) : elementRectInfo.right;
+	window.scrollTo(elementRightPosition - (margin * 2), elementBottomPosition - (margin * 2));
 }
 export function setStyle(element: any, styleObj: any) {
 	let keys = Object.keys(styleObj);

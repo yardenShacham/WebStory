@@ -27,10 +27,12 @@ export class WebStory {
 		this.lifeStyleCallbacks = settings.lifeStyleCallbacks;
 		this.configuration = settings.configuration ? settings.configuration : {
 			isVisableMode: true,
+			isAutoScrolling: null,
 			renderTimeout: null
 		}
-		this.storyContainer = new StoryContainer(this.setPagesWithDefaultTemplate(settings.pages), this.configuration.renderTimeout);
 		window.addEventListener('resize', this.onResize, null);
+		this.storyContainer = new StoryContainer(this.setPagesWithDefaultTemplate(settings.pages),
+			this.configuration.renderTimeout, this.configuration.isAutoScrolling);
 	}
 
 
